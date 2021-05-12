@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <title>Opciones</title>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="./statics/styles/options.css"/>
+        <script type="text/javascript" src="./statics/js/options.js"></script>
+    </head>
+    <body>
+        <form>
+            <h2>Diligencia los siguientes datos</h2>
+            <label for="name">Ingresa el nombre de tu persona especial: </label>
+            <input type="text" id="name" name="name" placeholder="Nombre" required/>
+            <label for="rol">Selecciona el rol: </label>
+            <select name="rol" id="rol">
+                <option value="amigo">amigo</option>
+                <option value="amiga">amiga</option>
+                <option value="novio">novio</option>
+                <option value="novia">novia</option>
+                <option value="esposo">esposo</option>
+                <option value="esposa">esposa</option>
+            </select>
+            <label>Escribe algo para tu persona especial: </label>
+            <textarea id="text" required></textarea>
+            <button type="button" id="showResult">Visualizar resultados</button>
+            <p id="noData">Asegurate de que todos los campos esten diligenciados</p>
+        </form>
+    </body>
+</html>

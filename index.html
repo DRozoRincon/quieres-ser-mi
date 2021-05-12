@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <title>¿Quieres ser mi ...?</title>
+
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;900&display=swap" rel="stylesheet">
+        
+        <link rel="stylesheet" href="./statics/styles/index.css"/>
+        <script type="text/javascript" src="./statics/js/index.js"></script>
+    </head>
+    <body>
+        <main id="content">
+            <h1 id="titulo"> </h1>
+            <div id="imgContainer">
+                <img id="img" src="./statics/files/couple.jpg"/>
+            </div>
+            
+            <div id="buttonsContainer">
+                <button id="btnsi" type="button">Sì</button>
+                <button id="btno" type="button" >No</button>
+            </div>
+        </main>
+        <div id="promptContainer" class="cerrar">
+            <div id="prompt">
+                <span id="closePrompt">x</span>
+                <div id="textoContainer">
+                    <h2>Sabia que dirias que si :)</h2>
+                    <div id="texto"></div>
+                </div>
+            </div>
+        </div>
+        <audio autoplay loop src="./statics/files/romantic_song.mp3"></audio>
+    </body>
+</html>
