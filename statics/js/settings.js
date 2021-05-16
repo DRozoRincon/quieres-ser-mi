@@ -8,7 +8,8 @@ window.addEventListener('load', ()=>{
 
     showResult.addEventListener('click',() =>{
         if(name.value != '' && text.value != ''){
-            window.open(`https://drozorincon.github.io/quieres-ser-mi/index.html?name=${name.value}&rol=${rol.value}&text=${window.btoa(unescape(encodeURIComponent(text.value)))}`, '_blank');
+            let url = window.location.href;
+            window.open(`${url.slice(0,-14)}/index.html?name=${name.value}&rol=${rol.value}&text=${window.btoa(unescape(encodeURIComponent(text.value)))}`, '_blank');
         }else{
             noData.classList.toggle('showNodata');
         }

@@ -8,6 +8,42 @@ body {
     color: #343a40;
 }
 
+#heartsLeft, #heartsRight{
+    display: flex;
+    flex-flow: wrap column;
+    width: 200px;
+    position: fixed;
+    z-index: 3;
+    top: 1000%;
+}
+
+.showTranslationAnimation{
+    animation: translationToTop 5s linear;
+}
+
+#heartsLeft{
+    left: 20px;
+}
+
+#heartsRight{
+    left: calc(100% - 220px);
+}
+
+.heart{
+    width: 80px;
+    height: 80px;
+    margin: 10px 0px;   
+}
+
+.rg{
+    align-self: flex-end;
+    animation: startRotateLeft 2s infinite linear;
+}
+
+.lf{
+    animation: startRotateRigth 2s infinite linear;
+}
+
 #content{
     display: flex;
     flex-flow: wrap column;
@@ -127,6 +163,51 @@ button{
     min-height: 160px;
     max-height: 300px;
     overflow: auto;
+    white-space: pre-line;
+}
+
+
+
+@keyframes startRotateLeft {
+    0%{
+        transform: rotate(0deg) scale(1.5,1.5);
+    }25%{
+        transform: rotate(30deg) scale(1,1);
+    }50%{
+        transform: rotate(0deg) scale(1.5,1.5);    
+    }75%{
+        transform: rotate(-30deg) scale(1,1);
+    }100%{
+        transform: rotate(0deg) scale(1.5,1.5);
+    }
+}
+
+@keyframes startRotateRigth {
+    0%{
+        transform: rotate(0deg) scale(1,1);  
+    }25%{
+        transform: rotate(-30deg) scale(1.5,1.5);
+    }50%{
+        transform: rotate(0deg) scale(1,1);   
+    }75%{
+        transform: rotate(30deg) scale(1.5,1.5);
+    }100%{
+        transform: rotate(0deg) scale(1,1);
+    }
+}
+
+
+@keyframes translationToTop {
+    0%{
+        top: 200%;
+        opacity: 1;
+    }50%{
+        top: 0%;
+        opacity: 1;
+    }100%{
+        opacity: 0;
+        top: -200%;
+    }
 }
 
 @keyframes shadowAnimated {
@@ -145,6 +226,36 @@ button{
         opacity: 0;
     }to{
         opacity: 1;
+    }
+}
+
+@media (max-width: 500px){
+    .heart{
+        width: 50px;
+        height: 50px;  
+    }
+
+    #heartsLeft, #heartsRight{
+        width: 130px;
+    }
+
+    #heartsRight{
+        left: calc(100% - 150px);
+    }
+}
+
+@media (max-width: 330px){
+    .heart{
+        width: 35px;
+        height: 35px;  
+    }
+
+    #heartsLeft, #heartsRight{
+        width: 110px;
+    }
+
+    #heartsRight{
+        left: calc(100% - 130px);
     }
 }
 
