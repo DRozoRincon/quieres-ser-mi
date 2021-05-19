@@ -5,7 +5,6 @@ window.addEventListener('load', ()=>{
     let showResult = document.getElementById('showResult');
     let noData = document.getElementById('noData');
 
-
     showResult.addEventListener('click',() =>{
         if(name.value != '' && text.value != ''){
             let url = window.location.href;

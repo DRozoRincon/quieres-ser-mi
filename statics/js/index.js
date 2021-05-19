@@ -13,7 +13,8 @@ function getQueries(){
 
 window.addEventListener('load', ()=>{
     document.getElementById('titulo').append(`¿${params.get('name')[0].toUpperCase() + params.get('name').slice(1)} quieres ser mi ${params.get('rol')}?`);
-    document.getElementById("my_audioRomantic").play(); // play audio
+    
+
     let audioAgradecido = document.getElementById('my_audioAgradecido');
     let heartsRigth = document.getElementById('heartsRight');
     let heartsLeft = document.getElementById('heartsLeft');
@@ -27,27 +28,36 @@ window.addEventListener('load', ()=>{
     let heightWindow = window.innerHeight;
     let widthWindow = window.innerWidth;
 
-    window.addEventListener("resize", function(event) { // para evitar que sea tapado boton NO en resize de la ventana
+    // Para evitar que sea tapado boton NO en resize de la ventana
+    window.addEventListener("resize", () => { 
         heightWindow = window.innerHeight;
         widthWindow = window.innerWidth;
         btnNo.style.top = `0px`;
         btnNo.style.left = `0px`;
     });
 
-    btnNo.addEventListener('mouseover',() =>{
-        moveBtnNo();
-    });
+    // Para reubicar boton No al hacer click o hover
+    const moveBtnNo = function(){
+        let leftBtn = Math.floor(Math.random() * (widthWindow));
+        let topBtn = Math.floor(Math.random() * (heightWindow));
+        if(leftBtn > (widthWindow - 70)) leftBtn = leftBtn - 70;
+        if(topBtn > (heightWindow - 70)) topBtn = topBtn - 70;
+        btnNo.style.position = 'fixed';
+        btnNo.style.top = `${topBtn}px`;
+        btnNo.style.left = `${leftBtn}px`;
+    }
 
-    btnNo.addEventListener('click',() =>{
-        moveBtnNo();
-    });
+    btnNo.addEventListener('mouseover', moveBtnNo);
 
+    btnNo.addEventListener('click', moveBtnNo);
+
+    // Para reproducir audio, mostrar animacion de corazones y mostrar el prompt con el mensaje
     btnSi.addEventListener('click',() =>{
-        //Logica para animacion de corazones
         audioAgradecido.play();
+        //Logica para animacion de corazones
         heartsRigth.classList.add('showTranslationAnimation');
         heartsLeft.classList.add('showTranslationAnimation');
-        if(!waitingFinishAnimation){
+        if(!waitingFinishAnimation){ // para evitar colas en la funcion setTimeOut
             waitingFinishAnimation = true;
             setTimeout(function(){
                 waitingFinishAnimation = false;
@@ -63,18 +73,21 @@ window.addEventListener('load', ()=>{
         texto.innerHTML = html;
     });
 
+    // Para cerrar el prompt
     closePrompt.addEventListener('click',() =>{
         promptContainer.classList.remove('abrir');
         promptContainer.classList.add('cerrar');
     });
 
-    function moveBtnNo(){
-        let leftBtn = Math.floor(Math.random() * (widthWindow));
-        let topBtn = Math.floor(Math.random() * (heightWindow));
-        if(leftBtn > (widthWindow - 70)) leftBtn = leftBtn - 70;
-        if(topBtn > (heightWindow - 70)) topBtn = topBtn - 70;
-        btnNo.style.position = 'fixed';
-        btnNo.style.top = `${topBtn}px`;
-        btnNo.style.left = `${leftBtn}px`;
+
+    // Para reproducir audio romantico cuando alla interaccion con la pagina web
+    const playRomanticAudio = function(){
+        document.getElementById('my_audioRomantic').play();
+        document.removeEventListener('mouseover', playRomanticAudio);
+        document.removeEventListener('click', playRomanticAudio);
     }
+
+    document.addEventListener('mouseover', playRomanticAudio);
+    document.addEventListener('click', playRomanticAudio);
+
 });
